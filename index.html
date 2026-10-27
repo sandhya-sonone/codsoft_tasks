@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandhya Sonone | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fc;
+            color: #252b42;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #171d35;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #71e4d1;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #71e4d1;
+        }
+
+        section {
+            padding: 70px 10%;
+            scroll-margin-top: 20px;
+        }
+
+        .hero {
+            min-height: 440px;
+            background: linear-gradient(135deg, #171d35, #343d68);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin: 12px 0;
+        }
+
+        .hero h1 span {
+            color: #71e4d1;
+        }
+
+        .hero p {
+            color: #e0e4f2;
+            margin-bottom: 25px;
+        }
+
+        .tagline {
+            color: #71e4d1;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .profile {
+            width: 190px;
+            height: 190px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 5px solid #71e4d1;
+            background: #252e51;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: #71e4d1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #71e4d1;
+            color: #171d35;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px 8px 5px 0;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        .btn-outline {
+            border: 2px solid #71e4d1;
+            color: #71e4d1;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            color: #171d35;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .underline {
+            width: 65px;
+            height: 4px;
+            background: #35bda8;
+            margin: 0 auto 35px;
+            border-radius: 5px;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            color: #60677a;
+            font-size: 17px;
+        }
+
+        .skills {
+            background: #edf1f9;
+        }
+
+        .skill-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .skill {
+            background: white;
+            padding: 18px 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #18213b12;
+            font-weight: bold;
+            border-bottom: 3px solid #35bda8;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px #18213b12;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-banner {
+            min-height: 145px;
+            background: linear-gradient(135deg, #252e51, #35bda8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info p {
+            color: #60677a;
+            margin: 10px 0;
+        }
+
+        .project-info h3 {
+            color: #252b42;
+        }
+
+        .contact-box {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin: 15px 0;
+            font-size: 17px;
+        }
+
+        .contact-box a {
+            color: #178f80;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #171d35;
+            color: #e0e4f2;
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 55px;
+                padding-bottom: 55px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .profile {
+                width: 145px;
+                height: 145px;
+                font-size: 45px;
+            }
+
+            section {
+                padding: 50px 7%;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">SS.</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">WELCOME TO MY PORTFOLIO</p>
+            <h1>Hi, I'm <span>Sandhya Sonone</span></h1>
+            <h2>Information Technology Student</h2>
+            <p>
+                I am an IT student passionate about web development,
+                programming, and learning new technologies.
+                I enjoy turning ideas into useful digital projects.
+            </p>
+
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+
+        <div class="profile">SS</div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="underline"></div>
+
+        <p class="about-text">
+            Hello! I am Sandhya Sonone, an Information Technology
+            student interested in software development and web
+            technologies. I have a foundation in HTML, CSS, Java,
+            and Python. I am continuously improving my technical
+            skills by working on academic projects and exploring
+            new programming concepts. My goal is to become a
+            skilled software developer and create meaningful
+            technology solutions.
+        </p>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="underline"></div>
+
+        <div class="skill-list">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Java</div>
+            <div class="skill">Python Basics</div>
+            <div class="skill">MySQL Basics</div>
+            <div class="skill">Git & GitHub</div>
+            <div class="skill">Problem Solving</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="underline"></div>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="project-banner">
+                    Gesture Talk
+                </div>
+                <div class="project-info">
+                    <h3>Gesture Talk</h3>
+                    <p>
+                        An academic project focused on sign language
+                        communication by converting gestures into
+                        text to support communication accessibility.
+                    </p>
+                    <p><strong>Technologies:</strong> Android, Java, Python</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-banner">
+                    College Event Management
+                </div>
+                <div class="project-info">
+                    <h3>College Event Management System</h3>
+                    <p>
+                        A web application project designed to organize
+                        college events, manage registrations, and
+                        help students explore upcoming activities.
+                    </p>
+                    <p><strong>Technologies:</strong> Java, Spring Boot, HTML, CSS</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="underline"></div>
+
+        <div class="contact-box">
+            <p>
+                I am always interested in learning, collaborating,
+                and exploring new opportunities.
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <a href="mailto:nehasonone84@gmail.com">
+                    nehasonone84@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <strong>Location:</strong> Maharashtra, India
+            </p>
+
+            <p>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/" target="_blank"
+                   rel="noopener noreferrer">Visit GitHub</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            &copy; 2026 Sandhya Sonone. All Rights Reserved.
+        </p>
+        <p>Designed and developed with HTML and CSS.</p>
+    </footer>
+
+</body>
+</html>
