@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator | CodSoft</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            padding: 20px;
+        }
+
+        .calculator {
+            width: 100%;
+            max-width: 360px;
+            padding: 25px;
+            border-radius: 22px;
+            background: #1d2738;
+            box-shadow: 0 20px 45px #00000050;
+        }
+
+        .heading {
+            text-align: center;
+            color: white;
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .display {
+            width: 100%;
+            min-height: 100px;
+            padding: 20px 15px;
+            margin-bottom: 20px;
+            background: #101827;
+            border-radius: 12px;
+            color: white;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .previous {
+            color: #9ba9bd;
+            font-size: 16px;
+            min-height: 24px;
+            overflow-wrap: anywhere;
+        }
+
+        .current {
+            font-size: 34px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #2c394d;
+            color: white;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .utility {
+            background: #536176;
+        }
+
+        .operator {
+            background: #168fbd;
+        }
+
+        .equal {
+            background: #16a085;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .footer {
+            color: #aeb9c9;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 400px) {
+            .calculator {
+                padding: 18px;
+            }
+
+            button {
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <h1 class="heading">CALCULATOR</h1>
+
+        <div class="display" aria-live="polite">
+            <div class="previous" id="previous"></div>
+            <div class="current" id="current">0</div>
+        </div>
+
+        <div class="buttons">
+            <button class="utility" data-action="clear">AC</button>
+            <button class="utility" data-action="delete">DEL</button>
+            <button class="utility" data-action="percent">%</button>
+            <button class="operator" data-operator="/">÷</button>
+
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+            <button class="operator" data-operator="*">×</button>
+
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button class="operator" data-operator="-">−</button>
+
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button class="operator" data-operator="+">+</button>
+
+            <button class="zero" data-number="0">0</button>
+            <button data-action="decimal">.</button>
+            <button class="equal" data-action="equals">=</button>
+        </div>
+
+        <p class="footer">Designed by Sandhya Sonone | CodSoft</p>
+    </div>
+
+    <script>
+        const currentDisplay = document.getElementById("current");
+        const previousDisplay = document.getElementById("previous");
+        const buttons = document.querySelector(".buttons");
+
+        let currentValue = "0";
+        let previousValue = "";
+        let operator = null;
+        let resetDisplay = false;
+
+        function updateDisplay() {
+            currentDisplay.textContent = currentValue;
+            previousDisplay.textContent =
+                operator !== null && previousValue !== ""
+                ? previousValue + " " + operatorSymbol(operator)
+                : "";
+        }
+
+        function operatorSymbol(op) {
+            if (op === "*") return "×";
+            if (op === "/") return "÷";
+            return op;
+        }
+
+        function inputNumber(number) {
+            if (currentValue === "Error") {
+                currentValue = number;
+                resetDisplay = false;
+            } else if (resetDisplay) {
+                currentValue = number;
+                resetDisplay = false;
+            } else if (currentValue === "0") {
+                currentValue = number;
+            } else if (currentValue.length < 15) {
+                currentValue += number;
+            }
+
+            updateDisplay();
+        }
+
+        function inputDecimal() {
+            if (currentValue === "Error" || resetDisplay) {
+                currentValue = "0.";
+                resetDisplay = false;
+            } else if (!currentValue.includes(".")) {
+                currentValue += ".";
+            }
+
+            updateDisplay();
+        }
+
+        function chooseOperator(nextOperator) {
+            if (currentValue === "Error") return;
+
+            if (operator !== null && !resetDisplay) {
+                calculate();
+            }
+
+            previousValue = currentValue;
+            operator = nextOperator;
+            resetDisplay = true;
+            updateDisplay();
+        }
+
+        function calculate() {
+            if (operator === null || previousValue === "") return;
+
+            const first = Number(previousValue);
+            const second = Number(currentValue);
+            let result;
+
+            if (operator === "+") {
+                result = first + second;
+            } else if (operator === "-") {
+                result = first - second;
+            } else if (operator === "*") {
+                result = first * second;
+            } else if (operator === "/") {
+                if (second === 0) {
+                    currentValue = "Error";
+                    previousValue = "";
+                    operator = null;
+                    resetDisplay = true;
+                    updateDisplay();
+                    return;
+                }
+                result = first / second;
+            }
+
+            if (!Number.isFinite(result)) {
+                currentValue = "Error";
+            } else {
+                result = Number(result.toPrecision(12));
+                currentValue = String(result);
+            }
+
+            previousValue = "";
+            operator = null;
+            resetDisplay = true;
+            updateDisplay();
+        }
+
+        function clearCalculator() {
+            currentValue = "0";
+            previousValue = "";
+            operator = null;
+            resetDisplay = false;
+            updateDisplay();
+        }
+
+        function deleteNumber() {
+            if (currentValue === "Error" || resetDisplay) {
+                currentValue = "0";
+                resetDisplay = false;
+            } else if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+                if (currentValue === "-") currentValue = "0";
+            } else {
+                currentValue = "0";
+            }
+
+            updateDisplay();
+        }
+
+        function percentage() {
+            if (currentValue === "Error") return;
+
+            currentValue = String(Number(currentValue) / 100);
+            resetDisplay = true;
+            updateDisplay();
+        }
+
+        buttons.addEventListener("click", function(event) {
+            const button = event.target.closest("button");
+            if (!button) return;
+
+            if (button.dataset.number !== undefined) {
+                inputNumber(button.dataset.number);
+            } else if (button.dataset.operator) {
+                chooseOperator(button.dataset.operator);
+            } else {
+                const action = button.dataset.action;
+
+                if (action === "clear") {
+                    clearCalculator();
+                } else if (action === "delete") {
+                    deleteNumber();
+                } else if (action === "decimal") {
+                    inputDecimal();
+                } else if (action === "equals") {
+                    calculate();
+                } else if (action === "percent") {
+                    percentage();
+                }
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            const key = event.key;
+
+            if (key >= "0" && key <= "9") {
+                inputNumber(key);
+            } else if (key === ".") {
+                inputDecimal();
+            } else if (["+", "-", "*", "/"].includes(key)) {
+                chooseOperator(key);
+            } else if (key === "Enter" || key === "=") {
+                event.preventDefault();
+                calculate();
+            } else if (key === "Backspace") {
+                deleteNumber();
+            } else if (key === "Escape") {
+                clearCalculator();
+            } else if (key === "%") {
+                percentage();
+            }
+        });
+
+        updateDisplay();
+    </script>
+
+</body>
+</html>
