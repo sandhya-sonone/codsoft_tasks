@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderly | Explore the World</title>
+    <title>Sandhya Sonone | Portfolio</title>
 
     <style>
         * {
@@ -15,245 +15,267 @@
 
         body {
             font-family: Arial, sans-serif;
-            color: #24332f;
-            background: #fffdf8;
+            background: #f8f9fc;
+            color: #252b42;
             line-height: 1.6;
         }
 
         header {
+            background: #171d35;
+            color: white;
+            padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 12px #0000000d;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
-            color: #16866b;
+            color: #71e4d1;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: #24332f;
-            margin-left: 25px;
-            font-weight: 600;
+            font-size: 14px;
         }
 
         nav a:hover {
-            color: #16866b;
+            color: #71e4d1;
+        }
+
+        section {
+            padding: 70px 10%;
+            scroll-margin-top: 20px;
         }
 
         .hero {
-            min-height: 570px;
+            min-height: 440px;
+            background: linear-gradient(135deg, #171d35, #343d68);
+            color: white;
             display: flex;
             align-items: center;
-            padding: 70px 8%;
-            background:
-                linear-gradient(90deg, #102b26d9, #102b2633),
-                url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85");
-            background-size: cover;
-            background-position: center;
-            color: white;
+            justify-content: space-between;
+            gap: 35px;
         }
 
         .hero-content {
-            max-width: 650px;
+            max-width: 600px;
         }
 
         .hero h1 {
-            font-size: clamp(38px, 6vw, 65px);
-            line-height: 1.15;
-            margin-bottom: 22px;
+            font-size: 46px;
+            margin: 12px 0;
+        }
+
+        .hero h1 span {
+            color: #71e4d1;
         }
 
         .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #f0f4f1;
+            color: #e0e4f2;
+            margin-bottom: 25px;
+        }
+
+        .tagline {
+            color: #71e4d1;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .profile {
+            width: 190px;
+            height: 190px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            border: 5px solid #71e4d1;
+            background: #252e51;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: #71e4d1;
         }
 
         .btn {
             display: inline-block;
-            padding: 13px 28px;
-            background: #20a67f;
-            color: white;
-            text-decoration: none;
+            background: #71e4d1;
+            color: #171d35;
+            padding: 12px 22px;
             border-radius: 6px;
+            text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+            margin: 5px 8px 5px 0;
         }
 
         .btn:hover {
-            background: #11775a;
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 75px 8%;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-heading h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #183d32;
-        }
-
-        .section-heading p {
-            color: #687771;
-        }
-
-        .destinations {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .destination-card {
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 22px #00000012;
-            transition: 0.3s;
         }
 
-        .destination-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 28px #0000001a;
+        .btn-outline {
+            border: 2px solid #71e4d1;
+            color: #71e4d1;
+            background: transparent;
         }
 
-        .destination-card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            display: block;
+        .btn-outline:hover {
+            color: #171d35;
         }
 
-        .card-content {
-            padding: 22px;
-        }
-
-        .card-content h3 {
-            font-size: 22px;
-            margin-bottom: 8px;
-            color: #16866b;
-        }
-
-        .card-content p {
-            color: #687771;
-        }
-
-        .about {
-            background: #eaf5ef;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+        .section-title {
             text-align: center;
-        }
-
-        .feature {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 12px;
-        }
-
-        .feature .icon {
-            font-size: 38px;
+            font-size: 32px;
             margin-bottom: 12px;
         }
 
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #16866b;
+        .underline {
+            width: 65px;
+            height: 4px;
+            background: #35bda8;
+            margin: 0 auto 35px;
+            border-radius: 5px;
         }
 
-        .feature p {
-            color: #687771;
-        }
-
-        .cta {
+        .about-text {
+            max-width: 800px;
+            margin: auto;
             text-align: center;
-            background: #183d32;
+            color: #60677a;
+            font-size: 17px;
+        }
+
+        .skills {
+            background: #edf1f9;
+        }
+
+        .skill-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .skill {
+            background: white;
+            padding: 18px 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #18213b12;
+            font-weight: bold;
+            border-bottom: 3px solid #35bda8;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px #18213b12;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-banner {
+            min-height: 145px;
+            background: linear-gradient(135deg, #252e51, #35bda8);
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
         }
 
-        .cta h2 {
-            font-size: 34px;
-            margin-bottom: 15px;
+        .project-info {
+            padding: 24px;
         }
 
-        .cta p {
-            margin-bottom: 25px;
-            color: #e0ebe5;
+        .project-info p {
+            color: #60677a;
+            margin: 10px 0;
+        }
+
+        .project-info h3 {
+            color: #252b42;
+        }
+
+        .contact-box {
+            max-width: 650px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin: 15px 0;
+            font-size: 17px;
+        }
+
+        .contact-box a {
+            color: #178f80;
+            text-decoration: none;
         }
 
         footer {
+            background: #171d35;
+            color: #e0e4f2;
             text-align: center;
-            padding: 25px 8%;
-            background: #102b26;
-            color: white;
+            padding: 22px;
+            font-size: 14px;
         }
 
-        footer p {
-            margin: 5px 0;
-        }
-
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
             header {
-                flex-direction: column;
-                gap: 12px;
+                justify-content: center;
+                text-align: center;
             }
 
             nav {
-                display: flex;
-                flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px 18px;
-            }
-
-            nav a {
-                margin: 0;
-            }
-
-            .destinations,
-            .features {
-                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
             .hero {
-                min-height: 500px;
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 55px;
+                padding-bottom: 55px;
             }
-        }
 
-        @media (max-width: 550px) {
-            .destinations,
-            .features {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .profile {
+                width: 145px;
+                height: 145px;
+                font-size: 45px;
             }
 
             section {
-                padding: 55px 6%;
+                padding: 50px 7%;
             }
 
-            .hero {
-                padding: 55px 6%;
-            }
-
-            .section-heading h2 {
-                font-size: 29px;
+            .project-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -262,105 +284,139 @@
 <body>
 
     <header>
-        <div class="logo">Wanderly.</div>
+        <div class="logo">SS.</div>
 
         <nav>
             <a href="#home">Home</a>
-            <a href="#destinations">Destinations</a>
-            <a href="#about">Why Us</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Discover the World, One Journey at a Time.</h1>
-                <p>
-                    Explore breathtaking places, experience new cultures,
-                    and create unforgettable memories with Wanderly.
-                    Your next adventure starts here!
-                </p>
-                <a href="#destinations" class="btn">Explore Destinations</a>
-            </div>
-        </section>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">WELCOME TO MY PORTFOLIO</p>
+            <h1>Hi, I'm <span>Sandhya Sonone</span></h1>
+            <h2>Information Technology Student</h2>
+            <p>
+                I am an IT student passionate about web development,
+                programming, and learning new technologies.
+                I enjoy turning ideas into useful digital projects.
+            </p>
 
-        <section id="destinations">
-            <div class="section-heading">
-                <h2>Popular Destinations</h2>
-                <p>Find inspiration for your next unforgettable trip.</p>
-            </div>
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
 
-            <div class="destinations">
-                <article class="destination-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=800&q=80"
-                        alt="Beautiful tropical beach">
-                    <div class="card-content">
-                        <h3>Bali, Indonesia</h3>
-                        <p>Relax on beautiful beaches and discover peaceful tropical landscapes.</p>
-                    </div>
-                </article>
+        <div class="profile">SS</div>
+    </section>
 
-                <article class="destination-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80"
-                        alt="Paris city and Eiffel Tower">
-                    <div class="card-content">
-                        <h3>Paris, France</h3>
-                        <p>Experience charming streets, iconic landmarks, and unforgettable views.</p>
-                    </div>
-                </article>
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="underline"></div>
 
-                <article class="destination-card">
-                    <img
-                        src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80"
-                        alt="Traditional Japanese architecture">
-                    <div class="card-content">
-                        <h3>Kyoto, Japan</h3>
-                        <p>Explore traditional temples, beautiful gardens, and rich culture.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
+        <p class="about-text">
+            Hello! I am Sandhya Sonone, an Information Technology
+            student interested in software development and web
+            technologies. I have a foundation in HTML, CSS, Java,
+            and Python. I am continuously improving my technical
+            skills by working on academic projects and exploring
+            new programming concepts. My goal is to become a
+            skilled software developer and create meaningful
+            technology solutions.
+        </p>
+    </section>
 
-        <section class="about" id="about">
-            <div class="section-heading">
-                <h2>Why Travel With Us?</h2>
-                <p>We make every journey simple, special, and memorable.</p>
-            </div>
+    <section class="skills" id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="underline"></div>
 
-            <div class="features">
-                <div class="feature">
-                    <div class="icon">🌍</div>
-                    <h3>Amazing Places</h3>
-                    <p>Discover beautiful destinations and hidden gems around the world.</p>
+        <div class="skill-list">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Java</div>
+            <div class="skill">Python Basics</div>
+            <div class="skill">MySQL Basics</div>
+            <div class="skill">Git & GitHub</div>
+            <div class="skill">Problem Solving</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="underline"></div>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="project-banner">
+                    Gesture Talk
                 </div>
-
-                <div class="feature">
-                    <div class="icon">💰</div>
-                    <h3>Budget Friendly</h3>
-                    <p>Find travel inspiration and plan adventures that suit your budget.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="icon">❤️</div>
-                    <h3>Beautiful Memories</h3>
-                    <p>Make every trip meaningful with experiences worth remembering.</p>
+                <div class="project-info">
+                    <h3>Gesture Talk</h3>
+                    <p>
+                        An academic project focused on sign language
+                        communication by converting gestures into
+                        text to support communication accessibility.
+                    </p>
+                    <p><strong>Technologies:</strong> Android, Java, Python</p>
                 </div>
             </div>
-        </section>
 
-        <section class="cta" id="contact">
-            <h2>Your Next Adventure Awaits!</h2>
-            <p>Start exploring new places and make your travel dreams come true.</p>
-            <a href="mailto:nehasonone84@gmail.com" class="btn">Contact Us</a>
-        </section>
-    </main>
+            <div class="project-card">
+                <div class="project-banner">
+                    College Event Management
+                </div>
+                <div class="project-info">
+                    <h3>College Event Management System</h3>
+                    <p>
+                        A web application project designed to organize
+                        college events, manage registrations, and
+                        help students explore upcoming activities.
+                    </p>
+                    <p><strong>Technologies:</strong> Java, Spring Boot, HTML, CSS</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="underline"></div>
+
+        <div class="contact-box">
+            <p>
+                I am always interested in learning, collaborating,
+                and exploring new opportunities.
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <a href="mailto:nehasonone84@gmail.com">
+                    nehasonone84@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <strong>Location:</strong> Maharashtra, India
+            </p>
+
+            <p>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/" target="_blank"
+                   rel="noopener noreferrer">Visit GitHub</a>
+            </p>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2026 Wanderly. All Rights Reserved.</p>
-        <p>Designed with ❤️ by Sandhya Sonone</p>
+        <p>
+            &copy; 2026 Sandhya Sonone. All Rights Reserved.
+        </p>
+        <p>Designed and developed with HTML and CSS.</p>
     </footer>
 
 </body>
